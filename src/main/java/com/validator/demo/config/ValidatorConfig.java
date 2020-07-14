@@ -11,13 +11,10 @@ import javax.validation.ValidatorFactory;
 
 @Configuration
 public class ValidatorConfig {
-
     /*
     *@author:liuhongdi
     *@date:2020/7/12 上午10:48
     *@description:遇到第一个错误后立即返回，而不是遍历完全部错误
-     * @param
-    *@return:
     */
     @Bean
     public Validator validator() {
@@ -28,12 +25,10 @@ public class ValidatorConfig {
         return validatorFactory.getValidator();
     }
 
-    //配置2
     @Bean
     public MethodValidationPostProcessor methodValidationPostProcessor() {
         MethodValidationPostProcessor postProcessor = new MethodValidationPostProcessor();
         postProcessor.setValidator(validator());
         return postProcessor;
     }
-
 }

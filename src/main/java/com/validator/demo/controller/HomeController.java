@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Validated
 //@RestController
@@ -19,12 +21,12 @@ import javax.validation.constraints.Min;
 @RequestMapping("/home")
 public class HomeController {
 
-
     @GetMapping("/age")
     @ResponseBody
     public ResultUtil age(@Min(value = 10,message = "年龄最小为10")@Max(value = 100,message = "年龄最大为100") @RequestParam("age") Integer age) {
         return ResultUtil.success("this is age");
     }
+
 
     @GetMapping("/home")
     @ResponseBody
@@ -32,10 +34,11 @@ public class HomeController {
         return ResultUtil.success("this is home");
     }
 
+
     @GetMapping("/category")
     @ResponseBody
-    public ResultUtil category(@CategoryValid(message = "分类取值错误")@RequestParam("cate") String category) {
-        return ResultUtil.success("this is in inter");
+    public ResultUtil category(@Pattern(regexp="^[a-zA-Z]{4}$", message="分类取值错误")@RequestParam("cate") String category) {
+        return ResultUtil.success("this is in category");
     }
 
 

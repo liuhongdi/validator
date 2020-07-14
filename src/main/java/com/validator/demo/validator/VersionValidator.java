@@ -10,7 +10,6 @@ public class VersionValidator implements ConstraintValidator<VersionValid,Object
 
     //预定义传递的值
     //private String values;
-
     @Override
     public void initialize(VersionValid versionValidator) {
         //this.values = versionValidator.values();
@@ -22,7 +21,6 @@ public class VersionValidator implements ConstraintValidator<VersionValid,Object
         // 切割获取值
         String[] value_array = Constants.APP_VERSION_LIST.split(",");
         Boolean isFlag = false;
-
         for (int i = 0; i < value_array.length; i++){
             // 存在一致就跳出循环
             if (value_array[i] .equals(value)){
